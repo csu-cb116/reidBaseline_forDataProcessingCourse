@@ -6,7 +6,7 @@ import os
 
 from PIL import Image
 
-classes = ['ship']
+classes = ['boat']
 views = ['left', 'right', 'up', 'front', 'behind']
 backgrounds = ['sea', 'other']
 
@@ -23,38 +23,40 @@ def image_cut(img_dir, annotation_dir, out_path):
         line = annotation.readline()
 
     new_cut = [float(item) for item in lines[0]]
+    if int(lines[1][0]) < int(lines[2][0]):
+        view = int(lines[1][0])
+        background = int(lines[2][0])
+    else:
+        background = int(lines[1][0])
+        view = int(lines[2][0])
     # print(len(new_cut))
-    x, y, w, h, confidence = new_cut[1:]
+    x, y, w, h = new_cut[1:]
     new_cut.clear()
     # cut.clear()
-    if confidence >= 0.8:
-        left = int(width * x - 0.5 * width * w)
-        right = int(width * x + 0.5 * width * w)
-        upper = int(height * y - 0.5 * height * h)
-        lower = int(height * y + 0.5 * height * h)
-        cropped = img.crop((left, upper, right, lower))  # (left, upper, right, lower)
-        cropped.save(out_path)
-    # print("%s is processed!!\n" % (img_dir))
+    left = int(width * x - 0.5 * width * w)
+    right = int(width * x + 0.5 * width * w)
+    upper = int(height * y - 0.5 * height * h)
+    lower = int(height * y + 0.5 * height * h)
+    cropped = img.crop((left, upper, right, lower))  # (left, upper, right, lower)
+    out_path = out_path[:-4] + "_" + str(view - 1) + "_" + str(background - 6) + ".jpg"
+    cropped.save(out_path)
+
 
 def main():
-    img_dir = "D:\Dataset\\new_vessel\images (2)"
-    label_dir = "D:\Dataset\\new_vessel\images_labels"
-    save_path = "D:\Dataset\\new_vessel\yolo_cut"
-    for class_name in os.listdir(label_dir):
-        path = os.path.join(label_dir, class_name, "labels")
-        if os.path.isdir(path):
-            for img_lable in os.listdir(path):
-                img_lable_dir = os.path.join(path, img_lable)
-                img_path = os.path.join(img_dir, class_name, img_lable[:-3]+"jpg")
-                if not os.path.exists(os.path.join(save_path, class_name)):
-                    os.makedirs(os.path.join(save_path, class_name))
-                out_path_dir = os.path.join(save_path, class_name, img_lable[:-3]+"jpg")
-                image_cut(img_path, img_lable_dir, out_path_dir)
-                print(f"{img_lable} has processed!")
-
-        print(f"{class_name} has processed!")
-
-    print("All images are peocessed!")
+    resource_dir = r"/home/xyc/datasets/test_labelimg/new/"  # 第一级目录，对应姓名目录
+    save_path = r"/home/xyc/datasets/test_labelimg/cut/"
+    for vessel_id in os.listdir(resource_dir):
+        sub_dir = os.path.join(resource_dir, vessel_id)  # 二级目录，对应船舶编号
+        save_dir = os.path.join(save_path, vessel_id)
+        for file in os.listdir(sub_dir):
+            path = os .path.join(sub_dir, file)
+            if not os.path.isdir(path):
+                if not os.path.exists(save_dir):
+                    os.makedirs(save_dir)
+                img_dir = path
+                label_dir = os.path.join(sub_dir, "labels", file[:-4]+".txt")
+                out_path = os.path.join(save_dir, file)
+                image_cut(img_dir, label_dir, out_path)
 
 if __name__=="__main__":
     main()
