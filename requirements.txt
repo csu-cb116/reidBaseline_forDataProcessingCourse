@@ -1,0 +1,13 @@
+einops==0.6.0
+matplotlib==3.5.3
+numpy==1.21.6
+opencv_python_headless==4.6.0.66
+Pillow==9.3.0
+scikit_learn==1.2.0
+scipy==1.7.3
+tensorboardX==2.5.1
+timm==0.3.4
+torch==1.7.1
+torchvision==0.8.2
+tqdm==4.64.1
+ttach==0.0.3

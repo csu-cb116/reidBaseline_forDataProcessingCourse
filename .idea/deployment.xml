@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="TITANdocker2" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="A100docker1">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="A100docker1 (1)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="TITANdocker2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/xyc/reidBaseline_forDataProcessingCourse" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Titandocker">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/xyc/reidBaseline_forDataProcessingCourse" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

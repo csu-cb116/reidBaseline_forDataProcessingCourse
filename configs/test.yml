@@ -1,0 +1,17 @@
+height: 256
+weight: 256
+optim: adamw
+lr: 0.0003
+weight_decay: 0.05
+max_epoch: 60
+train_batch_size: 32
+test_batch_size: 32
+stepsize: [20, 30]
+gamma: 0.1
+warmup_iters: 5
+warmup_factor: 0.01
+warmup_method: linear
+arch: resnet50
+dataset_name: vessel_min_test
+root: /home/xyc/datasets/
+checkpoint_dir: /home/xyc/reidBaseline_forDataProcessingCourse/log/train/vessel_min/resnet50_20230128-2015/checkpoints/model_best.pth

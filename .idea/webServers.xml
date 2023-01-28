@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="29c39e0e-016b-49e3-b24e-e447c606600b" name="Titandocker">
+        <fileTransfer accessType="SFTP" host="192.168.1.184" port="8888" sshConfigId="ebaf8ac4-0de3-4dfb-be3c-8cc9081bc347" sshConfig="TITANdocker2">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
